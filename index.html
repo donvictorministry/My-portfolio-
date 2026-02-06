@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1877f2">
+    
+<!-- Open Graph Meta Tags -->
+<!-- Beautiful Link Previews -->
+
+<meta property="og:title" content="Rev. Don Victor PhD, Technologist, Researcher, Ministry Leader, Trainer">
+<meta property="og:description" content="Personal portfolio of Rev. Don Victor, PhD, focused on technology innovation, interdisciplinary research, and ministry work dedicated to reaching souls across the six continents.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourportfolio.example">
+<meta property="og:site_name" content="Rev. Don Victor Portfolio">
+<meta property="og:image" content="https://i.ibb.co/Nds2RNx7/Screenshot-20260206-110452.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rev. Don Victor PhD, Technologist, Researcher, Ministry Leader, Trainer">
+<meta name="twitter:description" content="Portfolio showcasing technology projects, research initiatives, and ministry work with global reach across six continents.">
+<meta name="twitter:image" content="https://i.ibb.co/Nds2RNx7/Screenshot-20260206-110452.png">
+
+<title>Rev. Don Victor, PhD. Portfolio - Ministry Leader, Trainer, Developer & Scholar</title>
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiRHIuIFBvcnRmb2xpbyIsInNob3J0X25hbWUiOiJQb3J0Zm9saW8iLCJzdGFydF91cmwiOiIvIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzE4NzdmMiIsInRoZW1lX2NvbG9yIjoiIzE4NzdmMiIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSFpwWlhkQ2IzZzlJakFnTUNBeU5EQWdNalF3SWo0OGNtVmpkQ0IzYVdSMGFEMGlNalF3SWlCb1pXbG5hSFE5SWpJME1DSWdabWxzYkQwaUl6RTROemRtTWlJdlBqd3ZjM1puUGc9PSIsInNpemVzIjoiMjQweDI0MCIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn1dfQ==">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1877f2;
+            --primary-dark: #166fe5;
+            --bg: #ffffff;
+            --text: #1c1e21;
+            --border: #dadde1;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        [data-theme="dark"] {
+            --bg: #18191a;
+            --text: #e4e6eb;
+            --border: #3e4042;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: all 0.3s;
+            padding-bottom: 60px;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            z-index: 100;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .app-info {
+            font-size: 10px;
+            opacity: 0.9;
+        }
+        .dev-name { 
+            font-weight: 700; 
+            font-size: 18px;
+            text-align: center;
+            flex: 1;
+        }
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        .theme-toggle:hover { background: rgba(255,255,255,0.3); }
+        .ticker {
+            background: rgba(0,0,0,0.2);
+            padding: 8px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            display: inline-block;
+            animation: scroll 25s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .container {
+            margin-top: 120px;
+            padding: 20px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .nav-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 100;
+        }
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            padding: 8px 12px;
+            font-size: 11px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.3s;
+            opacity: 0.6;
+        }
+        .nav-btn.active { color: var(--primary); opacity: 1; }
+        .nav-btn:hover { opacity: 1; }
+        .page { display: none; animation: fadeIn 0.3s; }
+        .page.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        h2 { margin-bottom: 16px; color: var(--primary); }
+        .info-section { margin-bottom: 24px; line-height: 1.8; }
+        .stack-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .stack-item {
+            background: rgba(24,119,242,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .social-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-link:hover { transform: scale(1.1); }
+        .whatsapp-cta {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            z-index: 99;
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-cta:hover { transform: scale(1.1); }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6); }
+        }
+        .bio-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .bio-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid var(--primary);
+            object-fit: cover;
+            display: block;
+        }
+        .bio-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+        .slideshow {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+        }
+        .slide-caption {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            width: 100%;
+        }
+        .slide-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .slide-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        .slide-btn:hover { background: var(--primary-dark); }
+        .slide-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .dot.active { background: var(--primary); width: 24px; border-radius: 4px; }
+        .credentials {
+            background: linear-gradient(135deg, rgba(24,119,242,0.1), rgba(24,119,242,0.05));
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary);
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-main">
+            <div class="logo-section">
+                <div class="logo-img">&lt;/&gt;</div>
+                <div>
+                    <div style="font-size: 12px; font-weight: 600;">DevPortfolio</div>
+                    <div class="app-info">v2.0</div>
+                </div>
+            </div>
+            <div class="dev-name">REV. DON VICTOR,  PhD</div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </div>
+        <div class="ticker">
+            <div class="ticker-content">Servant of God • Trainer • Scholar • Researcher • Developer • 100+ Web Applications Created • Reaching Souls Globally for Christ • Digital Innovation Expert • Available for Training & Consultation</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="home" class="page active">
+            <div class="slideshow">
+                <div class="slides-container" id="slidesContainer"></div>
+            </div>
+            <div class="slide-controls">
+                <button class="slide-btn" onclick="prevSlide()">←</button>
+                <button class="slide-btn" onclick="nextSlide()">→</button>
+            </div>
+            <div class="slide-dots" id="slideDots"></div>
+            
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Web Applications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Ministry Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Souls Reached</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="about" class="page">
+            <h2>About Me</h2>
+            <div class="card">
+                <div class="bio-header">
+                    <img src="https://i.ibb.co/84dRKY60/Screenshot-20260103-005841.png", alt="Profile" class="bio-photo">
+                    <div class="credentials">
+                       <h3 style="color: var(--primary); margin-bottom: 14px;" <strong>Rev. Don  Victor</strong> Ph.D. Ced., D.Min., M.Th, B.Th.
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">GOD'S SERVANT FIRST</h3>
+                    <p>Dr. Don Victor is an ordained Reverend Minister of the Lord Christ, distinguished scholar, researcher, creative writer, trainer and pioneering technologist whose life exemplifies a seamless integration of faith, intellect, and innovation. With a trajectory spanning from foundational WAEC certification to a PhD in Christian Education, Dr. Don Victor embodies the “equipped” leader—one trained by God and empowered to lead in both spiritual and academic arenas. Recognized globally for his scholarship and vision, he has established a broad footprint through multiple online and offline ministries, digital platforms, and educational initiatives designed to demonstrate that salvation is the ultimate catalyst for academic excellence, societal purpose, and transformative leadership.
+
+<h3 style="color: var(--primary); margin-bottom: 14px;">VISION & MISSION</h3>
+Driven by a bold mandate to see six million souls won for Christ across six continents, Dr. Don  Victor leverages his dual expertise in ministry and technology to scale the Gospel in unprecedented ways. His approach transcends traditional ministry; it prioritizes accessibility, impact, and sustainability. He builds digital platforms that do more than preach—they connect. These platforms provide safe, anonymous spaces for seekers to ask questions, engage with Scripture, and receive thoughtful, real-time guidance, fostering trust, spiritual openness, and genuine encounters with truth.
+A particular focus of his work is expanding access to Scripture in restricted regions. Through lightweight, offline-first Progressive Web Applications, he enables individuals to read the Bible safely without reliance on app stores or constant internet access. These innovations ensure the Word reaches hearts quietly, securely, and powerfully.
+
+Additionally, Dr. Don Victor dedicates significant effort to equipping the next generation through interactive, gamified, and socially engaging digital tools that encourage Bible study, reading, reward memorization, and cultivate young leaders passionate about sharing the Gospel.
+
+<h3 style="color: var(--primary); margin-bottom: 15px;">ACADEMIC & INTELLECTUAL CONTRIBUTIONS</h3>
+♧ Doctoral excellence was demonstrated by a PhD dissertation titled “Developing a Curriculum Framework for Fostering Civic Engagement and Political Leadership in Christian Education,” completed with a score of 97%.
+♧ Prolific scholarship includes more than fifty publications across theology, sociology, political science, and pedagogy, reflecting a polymathic commitment to Kingdom advancement.
+
+♧ Academic versatility is shown by multiple degrees including a PhD, MTh, and B.Th, together with numerous diplomas across diverse disciplines, reshaping Christian pedagogy and leadership preparation.
+
+♧ Interdisciplinary impact centers on research that prepares principled leaders for public governance, advocacy, and societal transformation, bridging theological insight with practical application.
+
+♧ His latest proficiency in web development and software engineering enables him to translate scholarly frameworks into scalable digital platforms, to design learning management systems, to automate curriculum delivery, and to build tools that support civic engagement, leadership training, ministry operations, and organizational growth.
+<h3 style="color: var(--primary); margin-bottom: 15px;"> LEADERSHIP & GLOBAL MINISTRY</h3>
+Founder & Visionary of Christian Educators and Ministry Leaders Certification Alliance (CEMLCA), Leading a global initiative to equip and certify 20,000 members across 100 nations by 2036, with 12 specialized academies in development to professionalize chaplaincy, marketplace leadership, and digital discipleship.
+
+Global Ministry Founder: Established worldwide online and offline platforms that cultivate Spirit-led leadership, offering a bridge between ancient faith and modern technology.
+Cross-Denominational Alliance Builder: Facilitates collaboration across global networks to bring truth, healing, and transformation into every sphere of society.
+
+<h3 style="color: var(--primary); margin-bottom: 15px;">PROFESSIONAL EXPERIENCE</h3>
+University Lecturer — Tenure concluded at PhD convocation. He mastered the art of distilling complex spiritual truths into actionable wisdom and mentored the next generation of academic and spiritual leaders. He established several online platforms to equip men and women of God and to train businesses in applying scriptural principles for breakthrough. Thousands of emerging leaders have benefited from his mentorship and tutoring.  
+
+Today, the story is different: he leverages high-level technical expertise to build the digital infrastructure necessary for a modern ministry, for businesses, and apostolic commission.
+
+<h3 style="color: var(--primary); margin-bottom: 15px;">CORE EXPERTISE</h3>
+Innovative Curriculum Design: Bridging faith with active societal participation. Faith-Based Public Leadership: Equipping scholars with moral foundations for governance and advocacy. Spiritual Formation: Cultivating fearless disciplers through rigorous, Scripture-centered instruction. Digital Discipleship: Leveraging technology to extend Kingdom influence globally.
+
+<h3 style="color: var(--primary); margin-bottom: 15px;">AFFILIATIONS & STRATEGIC GOALS</h3>
+Member: Christian Educators Movement, United States.
+
+Strategic Objective (2026–2036): Publish 200 peer-reviewed papers and establish partnerships with 200 institutions worldwide.
+
+<h3 style="color: var(--primary); margin-bottom: 15px;">CALL TO ACTION</h3>
+Dr. Don Victor’s mission is not solitary. He invites men and women who carry a genuine burden for the Kingdom of God to join him—uniting faith, wisdom, creativity, and technology to advance the Gospel further and faster than ever before.
+
+<h3 style="color: purple; margin-bottom: 15px;">Rev. Don Victor, PhD.</h3>
+</p>
+  </div>
+           <div class="info-section">
+                    <h3 style="color: var(--primary); margin-bottom: 12px;"> Software Development</h3>
+                    <p>My academic journey complements my technical expertise. I approach software development with scholarly rigor, combining theological depth with technological innovation to create solutions that address both spiritual and practical needs.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3 style="color: var(--primary); margin-bottom: 12px;">Proven Impact</h3>
+                    <p>I am building digital tools that do more than preach. They connect. I am creating platforms where seekers can ask questions anonymously and receive thoughtful answers through real time interaction. These spaces remove fear, lower barriers, and open hearts to truth of God's Word.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3 style="color: var(--primary); margin-bottom: 12px;">Digital Solutions Architect</h3>
+                    <p>My expertise spans the full spectrum of digital challenges facing modern organizations. From web development and digital innovation, I've delivered hundreds of applications that solve real-world problems for corporate organizations, private firms, and Christian ministries.</p>
+                </div>
+                <div class="info-section">
+                    <h3 style="color: var(--primary); margin-bottom: 12px;">Trainer & Consultant</h3>
+                    <p>I'm passionate about empowering others with digital literacy and development skills. Available for on-the-job training and expert consultation, I work with corporate organizations, private firms, individuals, and Christian bodies to build capacity and drive digital transformation.</p>
+                </div>
+                <div class="info-section">
+                    <h3 style="color: var(--primary); margin-bottom: 12px;">Mission & Vision</h3>
+                    <p>My mission is to bridge the gap between faith and technology, demonstrating that digital excellence and spiritual devotion are not mutually exclusive but powerfully complementary. Through innovative web applications, I aim to expand the reach of the Gospel while solving practical challenges for organizations worldwide.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="mission" class="page">
+            <h2>Mission & Calling</h2>
+            <div class="card">
+                <div class="info-section">
+                    <h3 style="color: var(--primary);">Kingdom-Focused Technology</h3>
+                    <p>To leverage cutting-edge technology as an instrument of divine purpose, building digital solutions that advance the Kingdom of God while addressing critical organizational needs across sectors.</p>
+                </div>
+                
+                <div class="info-section">
+                    <h3 style="color: var(--primary);">Core Mission Pillars</h3>
+                    <p><strong>Spiritual Impact:</strong> Deploy web applications that facilitate Gospel outreach, discipleship, and church growth globally.</p>
+                    <p><strong>Organizational Excellence:</strong> Deliver hundreds of innovative solutions addressing digital challenges for businesses, ministries, and institutions.</p>
+                    <p><strong>Knowledge Transfer:</strong> Provide expert training and consultation to empower others in digital transformation.</p>
+                    <p><strong>Continuous Innovation:</strong> Stay at the forefront of web development, and emerging technologies.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3 style="color: var(--primary);">Values & Principles</h3>
+                    <p>• <strong>Faith-Driven Excellence:</strong> Every project reflects commitment to both spiritual and technical excellence</p>
+                    <p>• <strong>Servant Leadership:</strong> Approach all work as service to God and humanity</p>
+                    <p>• <strong>Integrity & Quality:</strong> Deliver solutions that honor commitments and exceed expectations</p>
+                    <p>• <strong>Impact Over Scale:</strong> Focus on meaningful outcomes for souls and organizations</p>
+                    <p>• <strong>Continuous Growth:</strong> Embrace learning as both scholar and practitioner</p>
+                </div>
+
+                <div class="info-section">
+                    <h3 style="color: var(--primary);">Vision for Tomorrow</h3>
+                    <p>To become a leading voice in faith-based technology, demonstrating how digital innovation can serve eternal purposes while solving contemporary challenges. Building a legacy of applications that continue reaching souls and empowering organizations long into the future.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="services" class="page">
+            <h2>Services & Expertise</h2>
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Professional Services</h3>
+                
+                <div class="info-section">
+                    <h4 style="color: var(--primary);">Web Application Development</h4>
+                    <p>Full-stack development of responsive, scalable web applications tailored to ministry, business, and organizational needs.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="color: var(--primary);">Ministry & Church Solutions</h4>
+                    <p>Specialized platforms for outreach, discipleship, online giving, event management, and global ministry expansion.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="color: var(--primary);">IoT & Connected Systems</h4>
+                    <p>Internet of Things solutions integrating physical devices with web applications for smart, automated workflows.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="color: var(--primary);">Consulting</h4>
+                    <p>Security audits, implementation of best practices, and protection strategies for web applications and digital assets.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="color: var(--primary);">Digital Innovation Strategy</h4>
+                    <p>Consultation on digital transformation, technology adoption, and innovative solutions for organizational growth.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="color: var(--primary);">Training & Capacity Building</h4>
+                    <p>On-the-job training for corporate organizations, private firms, individuals, and Christian bodies in web development and digital tools.</p>
+                </div>
+
+                <h3 style="margin: 24px 0 16px;">Technology Stack</h3>
+                <div class="stack-list">
+                    <div class="stack-item">HTML5 & CSS3</div>
+                    <div class="stack-item">JavaScript ES6+</div>
+                    <div class="stack-item">React & Vue.js</div>
+                    <div class="stack-item">Node.js</div>
+                    <div class="stack-item">Python</div>
+                    <div class="stack-item">Live-angel</div>
+                    <div class="stack-item">MySQL & MongoDB</div>
+                    <div class="stack-item">GAS & APIs</div>
+                    <div class="stack-item">PWA Development</div>
+                    <div class="stack-item">Cloud Services</div>
+                    <div class="stack-item">Work Space Integration</div>
+                    <div class="stack-item">Automation Technology</div>
+                    <div class="stack-item">Git</div>
+                    <div class="stack-item">UI/UX Design</div>
+                    <div class="stack-item">WordPress</div>
+                    <div class="stack-item">E-commerce</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="achievement" class="page">
+            <h2>Achievements & Impact</h2>
+            <div class="card">
+                <div class="credentials" style="text-align: center; margin-bottom: 24px;">
+                    <h3 style="color: var(--primary);">Academic Excellence</h3>
+                    <p style="font-size: 18px; margin-top: 8px;"><strong>Doctor of Philosophy (Ph.D Ced., | Doctor of Ministry (D.Min).</strong></p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Web Applications Deployed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Gospel-Centered Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Organizational Solutions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Global</div>
+                        <div class="stat-label">Souls Reached</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3 style="color: var(--primary);">Ministry Impact</h3>
+                    <p>• Built and deployed dozens of web applications specifically designed for Gospel outreach</p>
+                    <p>• Developed platforms reaching souls across continents for Christ</p>
+                    <p>• Created digital tools empowering churches and ministries worldwide</p>
+                    <p>• Integrated technology with evangelism, discipleship, and church growth strategies</p>
+                </div>
+
+                <div class="info-section">
+                    <h3 style="color: var(--primary);">Organizational Excellence</h3>
+                    <p>• Delivered hundreds of applications addressing digital challenges for diverse organizations</p>
+                    <p>• Solved complex technical problems for corporate, private, and nonprofit sectors</p>
+                    <p>• Implemented cybersecurity measures protecting sensitive organizational data</p>
+                    <p>• Drove digital transformation initiatives across multiple industries</p>
+                </div>
+
+                <div class="info-section">
+                    <h3 style="color: var(--primary);">Training & Mentorship</h3>
+                    <p>• Conducted on-the-job training for corporate organizations and private firms</p>
+                    <p>• Mentored individuals in web development and digital innovation, spiritual growth</p>
+                    <p>• Provided expert consultation for Christian bodies embracing technology</p>
+                    <p>• Built capacity in teams through hands-on technical training programs</p>
+                </div>
+
+                <div class="info-section">
+                    <h3 style="color: var(--primary);">Technical Achievements</h3>
+                    <p>• Full-stack development across multiple frameworks and languages</p>
+                    <p>• IoT integration and connected system implementation</p>
+                    <p>• Progressive Web App (PWA) expertise</p>
+                    <p>• Cloud deployment and scalable architecture design</p>
+                    <p>• API development and third-party integrations</p>
+                </div>
+
+                <div class="info-section">
+                    <h3 style="color: var(--primary);">Continuing Legacy</h3>
+                    <p>With over 100 applications created and counting, the journey continues. Each project represents an opportunity to serve God, reach souls, solve problems, and leave a lasting digital legacy that glorifies the Creator while serving His creation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact" class="page">
+            <h2>Let's Connect</h2>
+            <div class="card">
+                <p style="text-align: center; font-size: 18px; margin-bottom: 24px;">Ready to transform your digital presence or discuss your next project? I'm available for consultation, development work, and training opportunities.</p>
+                
+                <div class="social-links">
+                    <a href="mailto:donvictorministry@gmail.com" class="social-link" style="background: #EA4335;" title="Email">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="https://facebook.com/Rev.DonVictor" class="social-link" style="background: #1877f2;" title="Facebook">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://wa.me/2348086590253" class="social-link" style="background: #25D366;" title="WhatsApp">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    <a href="tel:+2347035794649" class="social-link" style="background: #34B7F1;" title="Phone">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </a>
+                    <a href="https://donvictoracademy.net" class="social-link" style="background: #1877f2;" title="Website">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </a>
+                </div>
+
+                <div style="background: rgba(24,119,242,0.1); padding: 20px; border-radius: 12px; margin-top: 32px; text-align: center;">
+                    <h3 style="color: var(--primary); margin-bottom: 12px;">Areas of Service</h3>
+                    <p>• Corporate Organizations • Private Firms • Christian Ministries • Individual Clients • Training Programs • Consultation Services</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-bottom">
+        <button class="nav-btn active" onclick="showPage('home')">
+            <span style="font-size: 20px;">🏠</span>
+            <span>Home</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('about')">
+            <span style="font-size: 20px;">👤</span>
+            <span>About</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('mission')">
+            <span style="font-size: 20px;">🎯</span>
+            <span>Mission</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('services')">
+            <span style="font-size: 20px;">⚙️</span>
+            <span>Services</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('achievement')">
+            <span style="font-size: 20px;">🏆</span>
+            <span>Achievement</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('contact')">
+            <span style="font-size: 20px;">📧</span>
+            <span>Contact</span>
+        </button>
+    </div>
+
+    <a href="https://wa.me/2348086590253?text=Hello%2C%20I%27m%20interested%20in%20your%20services" class="whatsapp-cta" title="Chat on WhatsApp">
+        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <script>
+        const config = { 
+            appVersion: '2.0', 
+            appName: 'A Dignified Portfolio', 
+            devName: 'Rev. Don Victor,  Ph.D',
+            ticker: 'Servant of God • Trainer • Scholar • Researcher • Software Developer • 100+ Web Applications Created • Reaching Souls Globally for Christ • Digital Innovation Expert • Available for Training & Consultation'
+        };
+
+        const slides = [
+            { img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800', caption: 'Web Development Excellence' },
+            { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800', caption: 'Digital Innovation & Analytics' },
+            { img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800', caption: 'Professional Web Applications' },
+            { img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800', caption: 'Modern Programming Solutions' },
+            { img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800', caption: 'Data-Driven Development' },
+            { img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800', caption: 'Team Collaboration & Innovation' },
+            { img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800', caption: 'IoT & Connected Systems' },
+            { img: 'https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800', caption: 'Internet Connectivity Solutions' },
+            { img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800', caption: 'Cybersecurity & Protection' },
+            { img: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800', caption: 'AI & Machine Learning Integration' },
+            { img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800', caption: 'Being a developer gives me a unique capacity to scale the Gospel instantly by His grace' },
+            { img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800', caption: 'Agile Development Practices' },
+            { img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800', caption: 'Mobile-First Responsive Design' },
+            { img: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800', caption: 'Cloud Computing & Deployment' },
+            { img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800', caption: 'UX/UI Design Excellence' },
+            { img: 'https://i.ibb.co/VcHzLyd1/IMG-20260206-WA0003.jpg/photo-1522202176988-66273c2fd55f?w=800', caption: 'As an ordained Reverend minister of Jesus Christ and a scholar of high repute, a researcher with established credentials, I carry a clear and audacious vision to win six million souls for Christ across six continents of the world.' },
+            { img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800', caption: 'Strategic Technology Planning' },
+            { img: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800', caption: 'Ministry Digital Solutions' },
+            { img: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800', caption: 'E-Commerce Development' },
+            { img: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800', caption: 'Full-Stack Development Mastery' }
+        ];
+
+        let currentSlide = 0;
+        let slideInterval;
+
+        function initSlideshow() {
+            const container = document.getElementById('slidesContainer');
+            const dotsContainer = document.getElementById('slideDots');
+            
+            slides.forEach((slide, idx) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'slide';
+                slideDiv.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('${slide.img}')`;
+                slideDiv.innerHTML = `<div class="slide-caption"><h3 style="margin-bottom: 8px;">${slide.caption}</h3><p>Professional Solutions • 100+ Projects Delivered</p></div>`;
+                container.appendChild(slideDiv);
+
+                const dot = document.createElement('div');
+                dot.className = idx === 0 ? 'dot active' : 'dot';
+                dot.onclick = () => goToSlide(idx);
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateSlide() {
+            const container = document.getElementById('slidesContainer');
+            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            document.querySelectorAll('.dot').forEach((dot, idx) => {
+                dot.className = idx === currentSlide ? 'dot active' : 'dot';
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlide();
+        }
+
+        function goToSlide(idx) {
+            currentSlide = idx;
+            updateSlide();
+        }
+
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 10000);
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? '' : 'dark');
+            localStorage.setItem('theme', isDark ? '' : 'dark');
+            document.querySelector('.theme-toggle').textContent = isDark ? '🌙' : '☀️';
+        }
+
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(page).classList.add('active');
+            event.target.closest('.nav-btn').classList.add('active');
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-toggle').textContent = '☀️';
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('data:text/javascript,self.addEventListener("install",e=>self.skipWaiting());self.addEventListener("activate",e=>self.clients.claim());');
+        }
+
+        initSlideshow();
+        startAutoSlide();
+    </script>
+</body>
+</html>
+
+                        
+                        
+                        
+                        
+                        
