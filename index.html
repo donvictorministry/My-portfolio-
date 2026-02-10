@@ -27,7 +27,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #1877f2;
+            --primary: Navy;
             --primary-dark: #166fe5;
             --bg: #ffffff;
             --text: #1c1e21;
@@ -72,7 +72,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: white;
+            background: green;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -270,7 +270,7 @@
             padding: 24px;
         }
         .slide-caption {
-            background: rgba(0, 0, 0, 0.7);
+            background: navy;
             color: white;
             padding: 16px 20px;
             border-radius: 8px;
@@ -341,7 +341,213 @@
     </style>
 </head>
 <body>
-    <div class="header">
+  <style>
+ /* 1. Ticker: Positioned below header */
+  #sys-ticker {
+    position: fixed; 
+    top: 56px; /* Adjust if header is taller */
+    left: 0; 
+    width: 100%; 
+    height: auto; /* ALLOWS VERTICAL GROWTH */
+    min-height: 60px; 
+    overflow: hidden; 
+    z-index: 999; 
+    display: none;
+    font-family: sans-serif; 
+    font-weight: bold; 
+    line-height: 1.4; /* Better spacing for multiple lines */
+    padding: 10px 0; /* Adds breathing room top and bottom */
+  }
+  
+  .ticker-item {
+    width: 100%; 
+    text-align: center; 
+    position: relative; /* Changed to Relative so it pushes the box open */
+    transform: translateX(100%); 
+    transition: transform 0.5s ease-in-out; 
+    white-space: normal; /* ALLOWS TEXT WRAPPING */
+    padding: 0 20px; /* Prevents text touching screen edges */
+  }
+  .ticker-active { transform: translateX(0); } 
+  .ticker-exit { transform: translateX(-100%); }
+
+ 
+  /* 2. Announcement Banner - RESTORED TO YOUR EXACT CODE */
+  #sys-banner {
+    position: fixed; 
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* True centering */
+    width: 80%; 
+    max-width: 500px;
+    padding: 20px 40px 20px 20px; /* Extra right padding for close button */
+    text-align: center; 
+    cursor: pointer;
+    font-family: sans-serif; 
+    z-index: 1000; 
+    display: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border-radius: 8px;
+  }
+   
+  /* Close button for banner */
+  .banner-close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.7;
+    padding: 0 8px;
+    line-height: 1;
+  }
+  .banner-close:hover {
+    opacity: 1;
+  }
+
+  /* 3. Full Screen Modal */
+  #sys-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 2000; display: none;
+    justify-content: center; align-items: center; flex-direction: column;
+  }
+  #sys-modal-content {
+    background: white; padding: 40px; border-radius: 8px; max-width: 80%;
+    text-align: center; font-size: 1.5rem;
+    overflow-y: auto; max-height: 80vh;
+  }
+  #sys-close {
+    margin-top: 20px; padding: 10px 20px; background: #333; color: #fff;
+    border: none; cursor: pointer; font-size: 1rem;
+  }
+</style>
+
+<div id="sys-ticker"></div>
+
+<div id="sys-banner">
+  <button class="banner-close">×</button>
+  <div class="banner-content"></div>
+</div>
+
+<div id="sys-modal">
+  <div id="sys-modal-content"></div>
+  <button id="sys-close">Close</button>
+</div>
+<script>
+  // 🔴 REPLACE THIS WITH YOUR GAS URL
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwhYC84pZ7uTvfTYKXy-OaMNiLO8nFpn0qhF48Buf4oMs6xxko1N9TeUWljRbN3nOb7/exec"; 
+  
+  const uid = localStorage.getItem('site_uid') || Math.random().toString(36).substr(2, 9);
+  localStorage.setItem('site_uid', uid);
+
+  // Track Visit
+  fetch(ENDPOINT, {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      uid: uid,
+      device: /Mobi/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
+      browser: navigator.userAgent
+    })
+  });
+
+  // Fetch & Render
+  fetch(ENDPOINT + `?uid=${uid}`)
+    .then(r => r.json())
+    .then(data => {
+      if (data.banned) {
+        document.body.innerHTML = "<h1 style='color:red;text-align:center;margin-top:20%'>ACCESS DENIED</h1>";
+        return;
+      }
+      if (data.tickers && data.tickers.length > 0) initTicker(data.tickers);
+      if (data.announcements && data.announcements.length > 0) initBanner(data.announcements[0]); 
+    })
+    .catch(err => console.warn("Widget Error:", err));
+
+  // --- Ticker Logic ---
+  function initTicker(items) {
+    const container = document.getElementById('sys-ticker');
+    container.style.display = 'block';
+    let index = 0;
+    
+    function showNext() {
+      container.innerHTML = ''; 
+      const item = items[index];
+      
+      const div = document.createElement('div');
+      div.className = 'ticker-item';
+      
+      // ✅ FIX: Allow Links (innerHTML)
+      div.innerHTML = item.msg; 
+      
+      div.style.backgroundColor = item.bg;
+      div.style.color = item.color;
+      
+      container.appendChild(div);
+      
+      void div.offsetWidth; 
+      div.classList.add('ticker-active');
+
+      setTimeout(() => {
+        div.classList.remove('ticker-active');
+        div.classList.add('ticker-exit');
+        
+        index = (index + 1) % items.length;
+        setTimeout(showNext, 500); 
+      }, item.speed || 4000);
+    }
+    showNext();
+  }
+
+  // --- Banner Logic ---
+  function initBanner(data) {
+    const banner = document.getElementById('sys-banner');
+    const contentDiv = banner.querySelector('.banner-content');
+    const closeBtn = banner.querySelector('.banner-close');
+    const modal = document.getElementById('sys-modal');
+    const modalContent = document.getElementById('sys-modal-content');
+    const modalClose = document.getElementById('sys-close');
+
+    // ✅ FIX: Allow Links in Banner (innerHTML)
+    contentDiv.innerHTML = data.msg;
+    
+    banner.style.backgroundColor = data.bg;
+    banner.style.color = data.color;
+    banner.style.display = 'block';
+
+    closeBtn.onclick = (e) => {
+      e.stopPropagation(); 
+      banner.style.display = 'none';
+    };
+
+    // Open Modal logic
+    banner.onclick = (e) => {
+        // Prevent opening if the user clicked a link inside the banner
+        if (e.target.tagName === 'A') return;
+
+        // ✅ FIX: Allow Links in Modal (innerHTML)
+        modalContent.innerHTML = data.msg;
+        modalContent.style.color = "#000"; 
+        modal.style.display = 'flex';
+    };
+
+    modalClose.onclick = () => {
+      modal.style.display = 'none';
+      if(data.duration > 0) banner.style.display = 'none';
+    };
+    
+    if(data.duration > 0) {
+      setTimeout(() => {
+        banner.style.display = 'none';
+      }, data.duration * 1000); 
+    }
+  }
+</script>
+  <div class="header">
         <div class="header-main">
             <div class="logo-section">
                 <div class="logo-img">&lt;/&gt;</div>
@@ -354,10 +560,10 @@
             <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
         </div>
         <div class="ticker">
-            <div class="ticker-content">Servant of God • Trainer • Scholar • Researcher • Developer • 100+ Web Applications Created • Reaching Souls Globally for Christ • Digital Innovation Expert • Available for Training & Consultation</div>
+        <div class="ticker-content"></div>
         </div>
     </div>
-
+    
     <div class="container">
         <div id="home" class="page active">
             <div class="slideshow">
@@ -379,7 +585,7 @@
                     <div class="stat-label">Ministry Projects</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">∞</div>
+                    <div class="stat-number">Thousands</div>
                     <div class="stat-label">Souls Reached</div>
                 </div>
             </div>
@@ -394,7 +600,6 @@
                        <h3 style="color: var(--primary); margin-bottom: 14px;" <strong>Rev. Don  Victor</strong> Ph.D. Ced., D.Min., M.Th, B.Th.
                     </div>
                 </div>
-                
                 <div class="info-section">
                     <h3 style="color: var(--primary); margin-bottom: 15px;">GOD'S SERVANT FIRST</h3>
                     <p>Dr. Don Victor is an ordained Reverend Minister of the Lord Christ, distinguished scholar, researcher, creative writer, trainer and pioneering technologist whose life exemplifies a seamless integration of faith, intellect, and innovation. With a trajectory spanning from foundational WAEC certification to a PhD in Christian Education, Dr. Don Victor embodies the “equipped” leader—one trained by God and empowered to lead in both spiritual and academic arenas. Recognized globally for his scholarship and vision, he has established a broad footprint through multiple online and offline ministries, digital platforms, and educational initiatives designed to demonstrate that salvation is the ultimate catalyst for academic excellence, societal purpose, and transformative leadership.
@@ -406,14 +611,14 @@ A particular focus of his work is expanding access to Scripture in restricted re
 Additionally, Dr. Don Victor dedicates significant effort to equipping the next generation through interactive, gamified, and socially engaging digital tools that encourage Bible study, reading, reward memorization, and cultivate young leaders passionate about sharing the Gospel.
 
 <h3 style="color: var(--primary); margin-bottom: 15px;">ACADEMIC & INTELLECTUAL CONTRIBUTIONS</h3>
-♧ Doctoral excellence was demonstrated by a PhD dissertation titled “Developing a Curriculum Framework for Fostering Civic Engagement and Political Leadership in Christian Education,” completed with a score of 97%.
-♧ Prolific scholarship includes more than fifty publications across theology, sociology, political science, and pedagogy, reflecting a polymathic commitment to Kingdom advancement.
+Doctoral excellence was demonstrated by a PhD dissertation titled “Developing a Curriculum Framework for Fostering Civic Engagement and Political Leadership in Christian Education,” completed with a score of 97%.
+Prolific scholarship includes more than fifty publications across theology, sociology, political science, and pedagogy, reflecting a polymathic commitment to Kingdom advancement.
 
-♧ Academic versatility is shown by multiple degrees including a PhD, MTh, and B.Th, together with numerous diplomas across diverse disciplines, reshaping Christian pedagogy and leadership preparation.
+Academic versatility is shown by multiple degrees including a PhD, D.Min., MTh, and B.Th, together with numerous diplomas across diverse disciplines, reshaping Christian pedagogy and leadership preparation.
 
-♧ Interdisciplinary impact centers on research that prepares principled leaders for public governance, advocacy, and societal transformation, bridging theological insight with practical application.
+Interdisciplinary impact centers on research that prepares principled leaders for public governance, advocacy, and societal transformation, bridging theological insight with practical application.
 
-♧ His latest proficiency in web development and software engineering enables him to translate scholarly frameworks into scalable digital platforms, to design learning management systems, to automate curriculum delivery, and to build tools that support civic engagement, leadership training, ministry operations, and organizational growth.
+His latest proficiency in web development and software engineering enables him to translate scholarly frameworks into scalable digital platforms, to design learning management systems, to automate curriculum delivery, and to build tools that support civic engagement, leadership training, ministry operations, and organizational growth.
 <h3 style="color: var(--primary); margin-bottom: 15px;"> LEADERSHIP & GLOBAL MINISTRY</h3>
 Founder & Visionary of Christian Educators and Ministry Leaders Certification Alliance (CEMLCA), Leading a global initiative to equip and certify 20,000 members across 100 nations by 2036, with 12 specialized academies in development to professionalize chaplaincy, marketplace leadership, and digital discipleship.
 
@@ -428,10 +633,11 @@ Today, the story is different: he leverages high-level technical expertise to bu
 <h3 style="color: var(--primary); margin-bottom: 15px;">CORE EXPERTISE</h3>
 Innovative Curriculum Design: Bridging faith with active societal participation. Faith-Based Public Leadership: Equipping scholars with moral foundations for governance and advocacy. Spiritual Formation: Cultivating fearless disciplers through rigorous, Scripture-centered instruction. Digital Discipleship: Leveraging technology to extend Kingdom influence globally.
 
-<h3 style="color: var(--primary); margin-bottom: 15px;">AFFILIATIONS & STRATEGIC GOALS</h3>
+<h3 style="color: var(--primary); margin-bottom: 15px;">AFFILIATIONS</h3>
 Member: Christian Educators Movement, United States.
 
-Strategic Objective (2026–2036): Publish 200 peer-reviewed papers and establish partnerships with 200 institutions worldwide.
+<h3 style="color: var(--primary); margin-bottom: 15px;">STRATEGIC GOALS</h3>
+Strategic Objective (2026–2036): To publish 200 peer-reviewed papers and establish partnerships with 200 institutions worldwide.
 
 <h3 style="color: var(--primary); margin-bottom: 15px;">CALL TO ACTION</h3>
 Dr. Don Victor’s mission is not solitary. He invites men and women who carry a genuine burden for the Kingdom of God to join him—uniting faith, wisdom, creativity, and technology to advance the Gospel further and faster than ever before.
@@ -705,8 +911,8 @@ Dr. Don Victor’s mission is not solitary. He invites men and women who carry a
             { img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800', caption: 'Agile Development Practices' },
             { img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800', caption: 'Mobile-First Responsive Design' },
             { img: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800', caption: 'Cloud Computing & Deployment' },
-            { img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800', caption: 'UX/UI Design: ExcellenceAs an ordained Reverend minister of Jesus Christ and a scholar of high repute, a researcher with established credentials, I carry a clear and audacious vision to win six million souls for Christ across six continents of the world' },
-            { img: 'https://i.ibb.co/VcHzLyd1/IMG-20260206-WA0003.jpg/photo-1522202176988-66273c2fd55f?w=800', caption: 'I am expanding Bible access in closed nations.' },
+            { img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800', caption: 'UX/UI Design Excellence' },
+            { img: 'https://i.ibb.co/VcHzLyd1/IMG-20260206-WA0003.jpg/photo-1522202176988-66273c2fd55f?w=800', caption: 'As an ordained Reverend minister of Jesus Christ and a scholar of high repute, a researcher with established credentials, I carry a clear and audacious vision to win six million souls for Christ across six continents of the world.' },
             { img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800', caption: 'Strategic Technology Planning' },
             { img: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800', caption: 'Ministry Digital Solutions' },
             { img: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800', caption: 'E-Commerce Development' },
